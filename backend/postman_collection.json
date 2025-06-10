@@ -1,0 +1,207 @@
+{
+  "info": {
+    "name": "Decentralized Social Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Verify Wallet",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"walletAddress\": \"0x...\",\n  \"signature\": \"0x...\",\n  \"message\": \"Sign this message to authenticate\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/auth/verify",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["auth", "verify"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get User Profile",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3001/users/:wallet",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["users", ":wallet"],
+              "variable": [
+                {
+                  "key": "wallet",
+                  "value": "0x..."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update User Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"John Doe\",\n  \"bio\": \"Web3 enthusiast\",\n  \"profile_pic_url\": \"https://example.com/avatar.jpg\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/users/:wallet",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["users", ":wallet"],
+              "variable": [
+                {
+                  "key": "wallet",
+                  "value": "0x..."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "Get All Posts",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3001/posts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["posts"]
+            }
+          }
+        },
+        {
+          "name": "Create Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Hello, Web3!\",\n  \"wallet_address\": \"0x...\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/posts",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["posts"]
+            }
+          }
+        },
+        {
+          "name": "Get Post",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3001/posts/:id",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["posts", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Like Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wallet_address\": \"0x...\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/posts/:id/like",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["posts", ":id", "like"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Comment on Post",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"wallet_address\": \"0x...\",\n  \"content\": \"Great post!\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/posts/:id/comment",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["posts", ":id", "comment"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 
